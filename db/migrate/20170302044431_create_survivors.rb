@@ -4,6 +4,7 @@ class CreateSurvivors < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :age
       t.integer :gender
+      t.boolean :infected, default: false
       t.decimal :latitude, precision: 10, scale: 6
       t.decimal :longitude, precision: 10, scale: 6
 

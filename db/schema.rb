@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(version: 20170302044923) do
     t.string   "name"
     t.integer  "age"
     t.integer  "gender"
+    t.boolean  "infected",                            default: false
     t.decimal  "latitude",   precision: 10, scale: 6
     t.decimal  "longitude",  precision: 10, scale: 6
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
   end
 
 end
