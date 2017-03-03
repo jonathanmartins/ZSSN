@@ -1,24 +1,93 @@
-# README
+# Zombie Survival Social Network
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## End Points
 
-Things you may want to cover:
+###List Survivors
 
-* Ruby version
+URL: /survivors
 
-* System dependencies
+Method: GET 
 
-* Configuration
+Success Response:
+```
+	Code: 200
+	Content: list of survivors
+```
+###Create Survivor
 
-* Database creation
+URL: /survivors
 
-* Database initialization
+Method: POST
 
-* How to run the test suite
+Data Params: 
+```
+{
+    "name":[string],
+    "age":[integer],
+    "gender":[male, female],
+    "latitude":[decimal],
+    "longitude":[decimal],
+    "inventory": {
+      water:[integer],
+      food:[integer],
+      medication:[integer],
+      ammunition:[integer]
+    }
+}
+```
+Success Response:
+```
+  Code: 201
+  Content: survivor data
+```
+###Update Survivor Location
 
-* Services (job queues, cache servers, search engines, etc.)
+URL: /survivors/:id
 
-* Deployment instructions
+Method: PATCH / PUT
 
-* ...
+URL Params: id=[integer]
+
+Data Params: 
+```
+{
+    "latitude":[decimal],
+    "longitude":[decimal]
+}
+```
+Success Response:
+```
+  Code: 200
+  Content: survivor data
+```
+###Show Survivor
+
+URL: /survivors/:id
+
+Method: GET
+
+URL Params: id=[integer]
+
+Success Response:
+```
+  Code: 200
+  Content: survivor data
+```
+
+###Report Survivor as Infected
+
+URL: /survivor/:id/report_infected
+
+Method: GET
+
+URL Params: id=[integer]
+
+Success Response:
+```
+  Code: 200
+  Content: survivor data
+```
+
+##Reports
+	GET /infected_survivors
+	GET /uninfected_survivors
