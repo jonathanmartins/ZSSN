@@ -1,5 +1,5 @@
 class SurvivorsController < ApplicationController
-  before_action :set_survivor, only: [:show, :update, :report]
+  before_action :set_survivor, only: [:show, :update, :report_infected]
 
   def index
     @survivors = Survivor.all
@@ -14,7 +14,7 @@ class SurvivorsController < ApplicationController
   def update
     if params.has_key?(:latitude) && params.has_key?(:longitude)
       @survivor.update(latitude: params[:latitude], longitude: params[:longitude])
-      head :no_content
+      json_response(@survivor)
     end
   end
 
@@ -28,6 +28,7 @@ class SurvivorsController < ApplicationController
       @survivor.infected = true
     end
     @survivor.save
+    json_response(@survivor)
   end
 
   private
