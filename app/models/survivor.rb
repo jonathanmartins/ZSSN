@@ -1,9 +1,10 @@
 class Survivor < ApplicationRecord
-  # relationships
-  has_many :resources, dependent: :destroy
+  serialize :inventory, Hash
+
+  attr_readonly :inventory
 
   # validations
-  validates_presence_of :name, :age, :gender, :latitude, :longitude
+  validates_presence_of :name, :age, :gender, :latitude, :longitude, :inventory
 
   # enum
   enum gender: [ :male, :female ]

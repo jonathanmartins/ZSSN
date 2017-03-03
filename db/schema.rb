@@ -12,14 +12,8 @@
 
 ActiveRecord::Schema.define(version: 20170303074813) do
 
-  create_table "resources", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "survivor_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "quantity"
-    t.index ["survivor_id"], name: "index_resources_on_survivor_id"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "survivors", force: :cascade do |t|
     t.string   "name"
@@ -28,8 +22,9 @@ ActiveRecord::Schema.define(version: 20170303074813) do
     t.boolean  "infected",                                  default: false
     t.decimal  "latitude",         precision: 10, scale: 6
     t.decimal  "longitude",        precision: 10, scale: 6
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
+    t.text     "inventory",                                 default: "---\n:water: 0\n:food: 0\n:medication: 0\n:ammunition: 0\n"
+    t.datetime "created_at",                                                                                                       null: false
+    t.datetime "updated_at",                                                                                                       null: false
     t.integer  "infection_report",                          default: 0
   end
 

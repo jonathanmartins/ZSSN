@@ -6,5 +6,6 @@ FactoryGirl.define do
     infected false
     latitude { Faker::Address.latitude }
     longitude { Faker::Address.longitude }
+    inventory {{water: 2, food: 2}}
   end
 end

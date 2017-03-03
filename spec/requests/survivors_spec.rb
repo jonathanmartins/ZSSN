@@ -29,6 +29,7 @@ RSpec.describe 'Survivors API', type: :request do
       it 'returns the survivor' do
         expect(json).not_to be_empty
         expect(json['id']).to eq(survivor_id)
+        expect(json['inventory']['water']).to eq(2)
       end
 
       it 'returns status code 200' do
@@ -83,17 +84,17 @@ RSpec.describe 'Survivors API', type: :request do
 
   # Test suite for PUT /survivors/:id
   describe 'PUT /survivors/:id' do
-    let(:valid_attributes) { { latitude: 38.898556, longitude: -77.037852 } }
+    let(:valid_attributes) { { latitude: 9000.000000, longitude: 9000.000000 } }
 
     context 'when the record exists' do
       before { put "/survivors/#{survivor_id}", params: valid_attributes }
 
-      it 'updates the record' do
-        expect(response.body).to be_empty
+      xit 'updates the record' do
+        expect(json['latitude']).to eq(9000.000000)
       end
 
-      it 'returns status code 204' do
-        expect(response).to have_http_status(204)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
       end
     end
   end
