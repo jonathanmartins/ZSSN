@@ -7,4 +7,8 @@ class Survivor < ApplicationRecord
 
   # enum
   enum gender: [ :male, :female ]
+
+  # queries
+  scope :infected, -> { where(infected: true) }
+  scope :uninfected, -> { where(infected: false) }
 end

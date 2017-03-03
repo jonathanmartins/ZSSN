@@ -1,5 +1,5 @@
 class SurvivorsController < ApplicationController
-  before_action :set_survivor, only: [:show, :update]
+  before_action :set_survivor, only: [:show, :update, :report]
 
   def index
     @survivors = Survivor.all
@@ -20,6 +20,14 @@ class SurvivorsController < ApplicationController
 
   def show
     json_response(@survivor)
+  end
+
+  def report_infected
+    @survivor.increment!(:infection_report)
+    if @survivor.infection_report > 2
+      @survivor.infected = true
+    end
+    @survivor.save
   end
 
   private

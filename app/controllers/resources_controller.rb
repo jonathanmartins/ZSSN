@@ -3,16 +3,22 @@ class ResourcesController < ApplicationController
   before_action :set_resource, only: :show
 
   def index
-    json_response(@survivor.resources)
+    unless @survivor.infected
+      json_response(@survivor.resources)
+    end
   end
 
   def create
-    @survivor.resources.create!(resource_params)
-    json_response(@survivor, :created)
+    unless @survivor.infected
+      @survivor.resources.create!(resource_params)
+      json_response(@survivor, :created)
+    end
   end
 
   def show
-    json_response(@resource)
+    unless @survivor.infected
+      json_response(@resource)
+    end
   end
 
   private
