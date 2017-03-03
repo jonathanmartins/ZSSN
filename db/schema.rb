@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302044923) do
+ActiveRecord::Schema.define(version: 20170303064929) do
 
   create_table "resources", force: :cascade do |t|
     t.string   "name"
     t.integer  "survivor_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "quantity"
     t.index ["survivor_id"], name: "index_resources_on_survivor_id"
   end
 

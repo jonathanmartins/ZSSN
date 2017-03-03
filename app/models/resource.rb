@@ -2,6 +2,6 @@ class Resource < ApplicationRecord
   # relationship
   belongs_to :survivor
 
-  # validation
-  validates_presence_of :name
+  # validations
+  validates_presence_of :name, :quantity
 end

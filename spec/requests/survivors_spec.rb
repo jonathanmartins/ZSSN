@@ -67,7 +67,7 @@ RSpec.describe 'Survivors API', type: :request do
       end
     end
 
-    context 'when the request is invalid' do
+    context 'when parameters are missing' do
       before { post '/survivors', params: {} }
 
       it 'returns status code 422' do

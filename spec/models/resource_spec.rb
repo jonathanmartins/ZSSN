@@ -8,4 +8,5 @@ RSpec.describe Resource, type: :model do
   # Validation test
   # ensure name is present
   it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:quantity) }
 end
