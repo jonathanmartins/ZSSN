@@ -84,13 +84,14 @@ RSpec.describe 'Survivors API', type: :request do
 
   # Test suite for PUT /survivors/:id
   describe 'PUT /survivors/:id' do
-    let(:valid_attributes) { { latitude: 9000.000000, longitude: 9000.000000 } }
+    let(:valid_attributes) { { latitude: 9000.123456, longitude: 9000.123456 } }
 
     context 'when the record exists' do
       before { put "/survivors/#{survivor_id}", params: valid_attributes }
 
-      xit 'updates the record' do
-        expect(json['latitude']).to eq(9000.000000)
+      it 'updates the record' do
+        expect(json['latitude']).to eq("9000.123456")
+        expect(json['longitude']).to eq("9000.123456")
       end
 
       it 'returns status code 200' do

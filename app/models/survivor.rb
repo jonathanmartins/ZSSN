@@ -1,8 +1,6 @@
 class Survivor < ApplicationRecord
   serialize :inventory, Hash
 
-  attr_readonly :inventory
-
   # validations
   validates_presence_of :name, :age, :gender, :latitude, :longitude, :inventory
 

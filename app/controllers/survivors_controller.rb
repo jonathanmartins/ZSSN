@@ -38,6 +38,6 @@ class SurvivorsController < ApplicationController
   end
 
   def survivor_params
-    params.permit(:name, :age, :gender, :latitude, :longitude, :inventory)
+    params.permit(:name, :age, :gender, :latitude, :longitude, inventory: Hash)
   end
 end
