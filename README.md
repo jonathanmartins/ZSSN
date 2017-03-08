@@ -8,7 +8,7 @@ https://zssn-rails.herokuapp.com/
 
 URL: /survivors
 
-Method: GET 
+Method: GET
 
 Success Response:
 ```
@@ -21,20 +21,18 @@ URL: /survivors
 
 Method: POST
 
-Data Params: 
+Data Params:
 ```
 {
     "name":[string],
     "age":[integer],
-    "gender":[male, female],
+    "gender":[male or female],
     "latitude":[decimal],
     "longitude":[decimal],
-    "inventory": {
-      water:[integer],
-      food:[integer],
-      medication:[integer],
-      ammunition:[integer]
-    }
+    "water":[integer],
+    "food":[integer],
+    "medication":[integer],
+    "ammunition":[integer]
 }
 ```
 Success Response:
@@ -50,7 +48,7 @@ Method: PATCH / PUT
 
 URL Params: id=[integer]
 
-Data Params: 
+Data Params:
 ```
 {
     "latitude":[decimal],

@@ -7,7 +7,13 @@ class SurvivorsController < ApplicationController
   end
 
   def create
-    @survivor = Survivor.create!(survivor_params)
+    @survivor = Survivor.new(survivor_params)
+    @survivor.inventory[:water] = params[:water] if params[:water]
+    @survivor.inventory[:food] = params[:food] if params[:food]
+    @survivor.inventory[:medication] = params[:medication] if params[:medication]
+    @survivor.inventory[:ammunition] = params[:ammunition] if params[:ammunition]
+    @survivor.save!
+
     json_response(@survivor, :created)
   end
 
@@ -38,6 +44,6 @@ class SurvivorsController < ApplicationController
   end
 
   def survivor_params
-    params.permit(:name, :age, :gender, :latitude, :longitude, inventory: Hash)
+    params.permit(:name, :age, :gender, :latitude, :longitude)
   end
 end
