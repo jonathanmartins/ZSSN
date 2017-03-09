@@ -10,10 +10,12 @@ class ReportsController < ApplicationController
   end
 
   def average_resources
-    
+    @average = Survivor.average_resources
+    json_response(@average)
   end
 
   def points_lost
-
+    @points_lost = Survivor.points_lost
+    json_response(@points_lost)
   end
 end

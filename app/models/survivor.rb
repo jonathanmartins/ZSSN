@@ -10,17 +10,34 @@ class Survivor < ApplicationRecord
 
   class << self
     def infected_survivors
-      return percentage(Survivor.where(infected: true).size)
+      percentage(infecteds.size)
     end
 
     def uninfected_survivors
-      return percentage(Survivor.where(infected: false).size)
+      percentage(uninfecteds.size)
+    end
+
+    def points_lost
+      points_lost = infecteds.sum(:points)
+      return "#{points_lost} points lost due to #{infecteds.size} infected survivors."
+    end
+
+    def average_resources
+      return "Todo"
     end
 
     private
       def percentage(part)
         whole = Survivor.all.size
         return ((part.to_f / whole.to_f) * 100).round(3).to_s + "%"
+      end
+
+      def infecteds
+        where(infected: true)
+      end
+
+      def uninfecteds
+        where(infected: false)
       end
   end
 
