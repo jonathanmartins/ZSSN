@@ -43,7 +43,7 @@ class Survivor < ApplicationRecord
 
   private
     def points
-      water, food, medication, ammunition = self.inventory.values_at(:water, :food, :medication, :ammunition)
-      self.points = (water.to_i * 4) + (food.to_i * 3) + (medication.to_i * 2) + (ammunition.to_i * 1)
+      water, food, med, ammo = self.inventory.values_at(:water, :food, :medication, :ammunition)
+      self.points = (water.to_i * 4) + (food.to_i * 3) + (med.to_i * 2) + (ammo.to_i * 1)
     end
 end

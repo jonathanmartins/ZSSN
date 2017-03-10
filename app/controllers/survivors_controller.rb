@@ -8,10 +8,10 @@ class SurvivorsController < ApplicationController
 
   def create
     @survivor = Survivor.new(survivor_params)
-    @survivor.inventory[:water] = params[:water] if params[:water]
-    @survivor.inventory[:food] = params[:food] if params[:food]
-    @survivor.inventory[:medication] = params[:medication] if params[:medication]
-    @survivor.inventory[:ammunition] = params[:ammunition] if params[:ammunition]
+    @survivor.inventory[:water] = params[:inventory][:water] if params[:inventory][:water]
+    @survivor.inventory[:food] = params[:inventory][:food] if params[:inventory][:food]
+    @survivor.inventory[:medication] = params[:inventory][:medication] if params[:inventory][:medication]
+    @survivor.inventory[:ammunition] = params[:inventory][:ammunition] if params[:inventory][:ammunition]
     @survivor.save!
 
     json_response(@survivor, :created)
