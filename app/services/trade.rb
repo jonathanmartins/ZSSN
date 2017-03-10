@@ -1,18 +1,18 @@
 class Trade
   class << self
-    def trade_resources(survivor_one, survivor_two, offer, wanted)
+    def trade_resources(survivor_one, survivor_two, offered, wanted)
       if infected?(survivor_one, survivor_two)
         return "There are infected survivors."
       end
 
-      if equal_points?(offer, wanted)
-        if has_items?(survivor_one, offer) && has_items?(survivor_two, wanted)
-          swap_items(survivor_one, survivor_two, offer, wanted)
+      if equal_points?(offered, wanted)
+        if has_items?(survivor_one, offered) && has_items?(survivor_two, wanted)
+          swap_items(survivor_one, survivor_two, offered, wanted)
         else
           return "Survivors does not have those items."
         end
       else
-        return "Different amount of points between offer and wanted."
+        return "Different amount of points between offered and wanted."
       end
     end
 
@@ -21,8 +21,8 @@ class Trade
         survivor_one.infected || survivor_two.infected
       end
 
-      def equal_points?(offer, wanted)
-        return points(offer) == points(wanted)
+      def equal_points?(offered, wanted)
+        return points(offered) == points(wanted)
       end
 
       def has_items?(survivor, items)
@@ -32,11 +32,11 @@ class Trade
         survivor.inventory[:ammunition] >= items[:ammunition].to_i
       end
 
-      def swap_items(survivor_one, survivor_two, offer, wanted)
+      def swap_items(survivor_one, survivor_two, offered, wanted)
         increase_items(survivor_one, wanted)
-        increase_items(survivor_two, offer)
+        increase_items(survivor_two, offered)
 
-        decrease_items(survivor_one, offer)
+        decrease_items(survivor_one, offered)
         decrease_items(survivor_two, wanted)
 
         survivor_one.save!

@@ -54,7 +54,7 @@ RSpec.describe 'Survivors API', type: :request do
   describe 'POST /survivors' do
     # valid attributes
     let(:valid_attributes) { { name: 'Jonh', age: 25, gender: :male, infected: false,
-                               latitude: 38.898556, longitude: -77.037852 } }
+                               latitude: 38.898556, longitude: -77.037852, inventory: { water: 1 } } }
 
     context 'when the request is valid' do
       before { post '/survivors', params: valid_attributes }
