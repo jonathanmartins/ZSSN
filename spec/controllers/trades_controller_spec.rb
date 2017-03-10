@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe TradesController, type: :controller do
 
-  describe "GET #trade" do
+  describe "POST /trade_with" do
     xit "returns http success" do
-      get :trade_with
+      post :trade_with
       expect(response).to have_http_status(:success)
     end
   end

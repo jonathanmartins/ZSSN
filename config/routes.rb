@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  get 'trades/trade'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :survivors, except: [:destroy] do
-    resources :resources, except: [:destroy, :update]
     get 'report_infected', on: :member
   end
 
